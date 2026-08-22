@@ -1,0 +1,20 @@
+/*  Write a PL/SQL block which converts temperature from Celsius to Fahrenheit. */
+
+SET SERVEROUTPUT ON;
+
+DECLARE 
+
+V_CELCIUS NUMBER;
+V_FAHREINHEIT NUMBER;
+
+
+BEGIN 
+
+V_CELCIUS := &CELCIUS;
+V_FAHREINHEIT := (V_CELCIUS*9/5)+32;
+
+DBMS_OUTPUT.PUT_LINE('CELCIUS = '|| V_CELCIUS);
+DBMS_OUTPUT.PUT_LINE('FAHREINHEIT = '|| V_FAHREINHEIT);
+
+END;
+/
