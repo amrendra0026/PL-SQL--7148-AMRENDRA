@@ -1,0 +1,30 @@
+-- Q7. Write a PL/SQL block to display records from the
+-- CUSTOMER table using an explicit cursor.
+
+SET SERVEROUTPUT ON;
+
+DECLARE
+    CURSOR C_CUSTOMER IS
+        SELECT ID, NAME, ADDRESS
+        FROM CUSTOMER;
+
+    V_ID CUSTOMER.ID%TYPE;
+    V_NAME CUSTOMER.NAME%TYPE;
+    V_ADDRESS CUSTOMER.ADDRESS%TYPE;
+
+BEGIN
+    OPEN C_CUSTOMER;
+
+    LOOP
+        FETCH C_CUSTOMER INTO V_ID, V_NAME, V_ADDRESS;
+
+        EXIT WHEN C_CUSTOMER%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE('ID = ' || V_ID);
+        DBMS_OUTPUT.PUT_LINE('NAME = ' || V_NAME);
+        DBMS_OUTPUT.PUT_LINE('ADDRESS = ' || V_ADDRESS);
+    END LOOP;
+
+    CLOSE C_CUSTOMER;
+END;
+/
